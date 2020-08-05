@@ -65,16 +65,16 @@
       copyBtn.addEventListener('click', function () {
         var value = output.value
 
-        navigator.clipboard
-          .writeText(value)
-          .then(function success() {
-            copyBtn.classList.add('copy-success')
-            copyBtn.textContent = 'Copied ✅'
-          })
-          .catch(function error() {
-            copyBtn.classList.add('copy-fail')
-            copyBtn.textContent = 'Oops 🤔'
-          })
+        output.focus()
+        output.select()
+        const result = document.execCommand('copy')
+        if (result === 'unsuccessful') {
+          copyBtn.classList.add('copy-fail')
+          copyBtn.textContent = 'Oops 🤔'
+        } else {
+          copyBtn.classList.add('copy-success')
+          copyBtn.textContent = 'Copied ✅'
+        }
       })
     </script>
   </body>
