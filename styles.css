@@ -21,7 +21,7 @@ label {
 input {
   padding: 7px 15px;
   color: #3e4043;
-  box-shadow: none;
+  -webkit-appearance: none;
 }
 
 button {
