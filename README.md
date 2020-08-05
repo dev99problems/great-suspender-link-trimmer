@@ -1,2 +1,3 @@
 # great-suspender-link-trimmer
-Single page for trimming meta info from The Great Suspender extension links(in suspended mode)
+
+This is the single page for doing only one simple thing — remove all meta information from suspended links by the browser extension [The Great Suspender](https://github.com/greatsuspender/thegreatsuspender)

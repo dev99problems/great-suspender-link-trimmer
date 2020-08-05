@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body>
+    <section class="align-center">
+      <h1 class="title">Suspended links Trimmer</h1>
+      <h3>Hello there 👋</h3>
+      <h3>This is the Great Suspender browser extension links trimmer</h3>
+
+      <form class="trimmer-form">
+        <label for="input">Insert SuspendedTab link for trim 🔪</label>
+        <div class="input-link-wrapper">
+          <input id="input" type="text" class="input-link" placeholder="chrome-extension://" />
+          <button id="clear-button" type="button" class="clear-btn hidden">
+            Clear 👨‍💻
+          </button>
+        </div>
+
+        <div class="trimm-wrapper">
+          <label for="output">Source link</label>
+          <div class="output-link-wrapper">
+            <input readonly id="output" class="output-link" />
+            <button id="copy-button" type="button" class="copy-btn">
+              Copy 👨‍💻
+            </button>
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <script>
+      var input = document.getElementById('input')
+      var output = document.getElementById('output')
+      var copyBtn = document.getElementById('copy-button')
+      var clearBtn = document.getElementById('clear-button')
+
+      input.addEventListener('change', function () {
+        var trimResult = input.value.replace(/^(\w|\W)*uri=/gi, '')
+        output.value = trimResult
+
+        if (input.value.length) {
+          clearBtn.classList.remove('hidden')
+        } else {
+          clearBtn.classList.add('hidden')
+        }
+      })
+
+      clearBtn.addEventListener('click', function () {
+        input.value = ''
+        clearBtn.classList.add('hidden')
+      })
+
+      copyBtn.addEventListener('click', function () {
+        var value = output.value
+
+        navigator.clipboard
+          .writeText(value)
+          .then(function success() {
+            copyBtn.classList.add('copy-success')
+            copyBtn.textContent = 'Copied ✅'
+          })
+          .catch(function error() {
+            copyBtn.classList.add('copy-fail')
+            copyBtn.textContent = 'Oops 🤔'
+          })
+      })
+    </script>
+  </body>
+</html>
