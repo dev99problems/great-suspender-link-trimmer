@@ -1,0 +1,40 @@
+.copy-button {
+  animation-name: fade-in;
+  animation-duration: 0.4s;
+}
+
+.copied-badge {
+  font-size: 13px;
+  animation-name: fade-out;
+  animation-duration: 2.5s;
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+
+
+  20% {
+    opacity: 0.85;
+  }
+
+  75% {
+    opacity: 0.45;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0.7;
+  }
+}
