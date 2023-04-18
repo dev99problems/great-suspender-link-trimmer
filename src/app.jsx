@@ -28,7 +28,7 @@ function Header() {
   )
 }
 
-function LinkInput({ value, onInputChange }) {
+function LinkInput({ value, onInputChange, onClear }) {
   const id = 'link-input'
 
   return (
@@ -41,6 +41,7 @@ function LinkInput({ value, onInputChange }) {
           id={id}
           value={value}
           onChange={onInputChange}
+          onClear={onClear}
           className="mt-5"
           placeholder="chrome-extension://"
         />
@@ -58,25 +59,6 @@ export function App() {
 
   const onResultLabelClick = () => {
     resultRef.current.focus()
-  }
-
-  const onCopyBtnClick = () => {
-    const outputElem = document?.getElementById('output')
-    outputElem.focus()
-    outputElem.select()
-
-    const success = document.execCommand('copy')
-    if (success) {
-      setCopySucceeded(true)
-      setCopyBtnText('Copied ✅')
-    } else {
-      setCopySucceeded(false)
-      setCopyBtnText('Oops, copying did not successed 🤔')
-    }
-    setTimeout(() => {
-      setCopySucceeded(undefined)
-      setCopyBtnText(undefined)
-    }, 3500)
   }
 
   const onInputChange = (e, val) => {
@@ -97,15 +79,21 @@ export function App() {
     }
   }
 
+  const onClear = () => {
+    setIsLink(false)
+    setLinkText('')
+  }
+
   return (
     <section>
       <Header />
 
-      <form class="trimmer-form flex column mt-35" onSubmit={(e) => e.preventDefault()}>
+      <form class="trimmer-form flex column mt-20" onSubmit={(e) => e.preventDefault()}>
         <div className="mb-30">
           <LinkInput
             value={inputValue}
             onInputChange={onInputChange}
+            onClear={onClear}
           />
         </div>
 

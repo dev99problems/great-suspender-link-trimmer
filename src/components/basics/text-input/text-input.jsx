@@ -15,7 +15,7 @@ function TextInput({ applyBase = true, className, ...rest }) {
   )
 }
 
-function TextInputClearable({ applyBase = true, className, onChange, value, ...rest }) {
+function TextInputClearable({ applyBase = true, className, onChange, onClear, value, ...rest }) {
   const inputRef = useRef(null)
   const classNames = applyBasicStyle({
     applyBase,
@@ -25,6 +25,7 @@ function TextInputClearable({ applyBase = true, className, onChange, value, ...r
 
   const clearInput = (e) => {
     onChange(e, '')
+    onClear?.(e)
     inputRef.current.focus()
   }
 
