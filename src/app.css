@@ -1,0 +1,77 @@
+#app {
+  display: flex;
+  align-items: center; 
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+body * {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+h3 {
+  margin: 0;
+}
+
+.header-text {
+  text-align: left;
+  font-weight: bold;
+  width: 550px;
+}
+
+.field-wrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  text-align: left;
+}
+
+.trimmer-form {
+  width: 540px;
+}
+
+.clear-btn,
+.copy-btn {
+  position: absolute;
+  right: 0;
+  top: 5px;
+}
+
+.result-link-wrapper {
+  text-align: left;
+  width: 100%;
+  height: 50px;
+}
+
+.result-link {
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+}
+
+@media screen and (max-width: 500px) {
+  .title {
+    width: 80%;
+    text-align: center;
+  }
+
+  .trimmer-form {
+    width: 95%;
+  }
+
+  .clear-btn,
+  .copy-btn {
+    width: 100px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .clear-btn,
+  .copy-btn {
+    width: 90px;
+    height: 45px;
+  }
+}

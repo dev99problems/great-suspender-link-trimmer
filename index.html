@@ -3,7 +3,6 @@
   <head>
     <title>Great Suspender link trimmer</title>
     <meta charset="UTF-8" />
-    <meta name="custom-x-tag" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover"
@@ -15,82 +14,8 @@
   </head>
 
   <body>
-    <section class="align-center">
-      <h1 class="title">Great Suspender links Trimmer 🔪</h1>
-      <h3 class="site-description">
-        Hello there 👋
-        <br />
-        This is <a href="https://github.com/greatsuspender/thegreatsuspender">Great Suspender</a> browser extension links trimmer
-      </h3>
-
-      <form class="trimmer-form">
-        <label for="input">Insert Suspended Tab link to trim extension info ✂️</label>
-        <div class="input-link-wrapper">
-          <input id="input" type="text" class="input-link" placeholder="chrome-extension://" />
-          <button id="clear-button" type="button" class="clear-btn hidden">Clear 🗑</button>
-        </div>
-
-        <div class="trim-wrapper">
-          <label for="output">Source link</label>
-          <div class="output-link-wrapper">
-            <input readonly id="output" class="output-link" />
-            <button id="copy-button" type="button" class="copy-btn">Copy 👨‍💻</button>
-          </div>
-        </div>
-
-        <div class="result-link-wrapper">
-          <a
-            href="#"
-            id="result-link"
-            target="_blank"
-            rel="noopener noreferrer"
-          ></a>
-        </div>
-      </form>
-    </section>
-
-    <script>
-      var input = document.getElementById('input')
-      var output = document.getElementById('output')
-      var copyBtn = document.getElementById('copy-button')
-      var clearBtn = document.getElementById('clear-button')
-      var link = document.getElementById('result-link')
-
-      input.addEventListener('change', function () {
-        var trimResult = input.value.replace(/^(\w|\W)*uri=/gi, '') || ''
-        var isLink = trimResult.startsWith('https://') || trimResult.startsWith('http://')
-
-        if (isLink) {
-          output.value = trimResult
-
-          link.setAttribute('href', trimResult)
-          link.text = trimResult
-        }
-
-        if (input.value.length) {
-          clearBtn.classList.remove('hidden')
-        } else {
-          clearBtn.classList.add('hidden')
-        }
-      })
-
-      clearBtn.addEventListener('click', function () {
-        input.value = ''
-        clearBtn.classList.add('hidden')
-      })
-
-      copyBtn.addEventListener('click', function () {
-        output.focus()
-        output.select()
-        const success = document.execCommand('copy')
-        if (!success) {
-          copyBtn.classList.add('copy-fail')
-          copyBtn.textContent = 'Oops 🤔'
-        } else {
-          copyBtn.classList.add('copy-success')
-          copyBtn.textContent = 'Copied ✅'
-        }
-      })
-    </script>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="app"></div>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
